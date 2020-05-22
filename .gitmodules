@@ -1,0 +1,3 @@
+[submodule "steel/thirdparty/spdlog"]
+	path = steel/thirdparty/spdlog
+	url = https://github.com/gabime/spdlog
