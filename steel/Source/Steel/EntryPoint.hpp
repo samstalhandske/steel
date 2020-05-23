@@ -7,6 +7,8 @@ extern Steel::Application* Steel::CreateApplication();
 
 int main(int argc, char** argv)
 {
+	Steel::Log::Init();
+
 	auto app = Steel::CreateApplication();
 	app->Run();
 	delete app;
