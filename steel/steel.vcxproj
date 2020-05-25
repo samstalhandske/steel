@@ -79,16 +79,18 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>STEEL_PLATFORM_WINDOWS;STEEL_BUILD_DLL;STEEL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>ThirdParty\spdlog\include;Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>STEEL_PLATFORM_WINDOWS;STEEL_BUILD_DLL;GLFW_INCLUDE_NONE;STEEL_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>ThirdParty\spdlog\include;Source;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Steel\Steel.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -100,20 +102,22 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>STEEL_PLATFORM_WINDOWS;STEEL_BUILD_DLL;STEEL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>ThirdParty\spdlog\include;Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>STEEL_PLATFORM_WINDOWS;STEEL_BUILD_DLL;GLFW_INCLUDE_NONE;STEEL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>ThirdParty\spdlog\include;Source;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\Steel\Steel.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -125,20 +129,22 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>STEEL_PLATFORM_WINDOWS;STEEL_BUILD_DLL;STEEL_RETAIL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>ThirdParty\spdlog\include;Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>STEEL_PLATFORM_WINDOWS;STEEL_BUILD_DLL;GLFW_INCLUDE_NONE;STEEL_RETAIL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>ThirdParty\spdlog\include;Source;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Retail-windows-x86_64\Steel\Steel.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -146,6 +152,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="Source\Platform\Windows\WindowsWindow.hpp" />
     <ClInclude Include="Source\Steel.hpp" />
     <ClInclude Include="Source\Steel\Application.hpp" />
     <ClInclude Include="Source\Steel\Core.hpp" />
@@ -155,12 +163,32 @@
     <ClInclude Include="Source\Steel\Events\Event.hpp" />
     <ClInclude Include="Source\Steel\Events\KeyEvent.hpp" />
     <ClInclude Include="Source\Steel\Events\MouseEvent.hpp" />
+    <ClInclude Include="Source\Steel\ImGui\ImGuiLayer.hpp" />
+    <ClInclude Include="Source\Steel\Layer.hpp" />
+    <ClInclude Include="Source\Steel\LayerStack.hpp" />
+    <ClInclude Include="Source\Steel\Window.hpp" />
     <ClInclude Include="Source\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="Source\Steel\Application.cpp" />
     <ClCompile Include="Source\Steel\Debug\Log.cpp" />
+    <ClCompile Include="Source\Steel\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="Source\Steel\Layer.cpp" />
+    <ClCompile Include="Source\Steel\LayerStack.cpp" />
     <ClCompile Include="Source\pch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ThirdParty\glfw\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="ThirdParty\glad\glad.vcxproj">
+      <Project>{DD62977C-C999-980D-7286-7E105E9C140F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="ThirdParty\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

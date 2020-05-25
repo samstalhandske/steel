@@ -11,6 +11,16 @@ workspace "Steel Engine"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	-- Include directories relative to root folder (solution dir)
+	IncludeDir = {}
+	IncludeDir["GLFW"] = "Steel/ThirdParty/glfw/include"
+	IncludeDir["glad"] = "Steel/ThirdParty/glad/include"
+	IncludeDir["ImGui"] = "Steel/ThirdParty/imgui"
+
+	include "Steel/ThirdParty/glfw"
+	include "Steel/ThirdParty/glad"
+	include "Steel/ThirdParty/imgui"
+
 project "Steel"
 	location "Steel"
 	kind "SharedLib"
@@ -32,7 +42,19 @@ project "Steel"
 	includedirs
 	{
 		"Steel/ThirdParty/spdlog/include",
-		"Steel/Source"
+		"Steel/Source",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.glad}",
+		"%{IncludeDir.ImGui}"
+
+	}
+
+	links
+	{
+		"GLFW",
+		"glad",
+		"ImGui",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -43,7 +65,8 @@ project "Steel"
 		defines
 		{
 			"STEEL_PLATFORM_WINDOWS",
-			"STEEL_BUILD_DLL"
+			"STEEL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -54,14 +77,17 @@ project "Steel"
 
 	filter "configurations:Debug"
 		defines "STEEL_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "STEEL_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Retail"
 		defines "STEEL_RETAIL"
+		buildoptions "/MD"
 		optimize "On"
 
 
@@ -105,12 +131,15 @@ project "Game"
 		
 	filter "configurations:Debug"
 		defines "STEEL_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "STEEL_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Retail"
 		defines "STEEL_RETAIL"
+		buildoptions "/MD"
 		optimize "On"

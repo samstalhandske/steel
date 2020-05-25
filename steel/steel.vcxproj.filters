@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Steel">
       <UniqueIdentifier>{02491E0E-6E5D-46BF-37DF-E91EA3B242F0}</UniqueIdentifier>
     </Filter>
@@ -10,8 +19,17 @@
     <Filter Include="Steel\Events">
       <UniqueIdentifier>{A67E0BAA-92E1-9A4E-3B67-D30427A966D1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Steel\ImGui">
+      <UniqueIdentifier>{ACF7ED14-18AD-660A-A1A1-60E10D565D0E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platform\Windows\WindowsWindow.hpp">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Steel.hpp" />
     <ClInclude Include="Source\Steel\Application.hpp">
       <Filter>Steel</Filter>
@@ -37,14 +55,41 @@
     <ClInclude Include="Source\Steel\Events\MouseEvent.hpp">
       <Filter>Steel\Events</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Steel\ImGui\ImGuiLayer.hpp">
+      <Filter>Steel\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Steel\Layer.hpp">
+      <Filter>Steel</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Steel\LayerStack.hpp">
+      <Filter>Steel</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Steel\Window.hpp">
+      <Filter>Steel</Filter>
+    </ClInclude>
     <ClInclude Include="Source\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Steel\Application.cpp">
       <Filter>Steel</Filter>
     </ClCompile>
     <ClCompile Include="Source\Steel\Debug\Log.cpp">
       <Filter>Steel\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Steel\ImGui\ImGuiLayer.cpp">
+      <Filter>Steel\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Steel\Layer.cpp">
+      <Filter>Steel</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Steel\LayerStack.cpp">
+      <Filter>Steel</Filter>
     </ClCompile>
     <ClCompile Include="Source\pch.cpp" />
   </ItemGroup>

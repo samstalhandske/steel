@@ -10,6 +10,8 @@
 #include <sstream>
 #include <vector>
 
+#include "Steel/Debug/Log.hpp"
+
 #include <unordered_map>
 #include <unordered_set>
 
