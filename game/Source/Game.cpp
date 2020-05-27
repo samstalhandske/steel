@@ -1,24 +1,24 @@
-#include "pch.h"
 #include <Steel.hpp>
+
+#include "imgui/imgui.h"
 
 class TestLayer : public Steel::Layer
 {
 public:
 	TestLayer() : Layer("Example")
 	{
-
 	}
 
 	void OnUpdate() override
 	{
-		STEEL_GAME_INFO("TestLayer Updating");
+	}
+	virtual void OnImGuiRender() override
+	{
 	}
 	void OnEvent(Steel::Event& event) override
 	{
-		STEEL_GAME_TRACE("{0}", event);
 	}
 private:
-
 };
 
 class Test : public Steel::Application
@@ -27,7 +27,6 @@ public:
 	Test()
 	{
 		PushLayer(new TestLayer());
-		PushOverlay(new Steel::ImGuiLayer());
 
 	}
 	~Test()

@@ -1,0 +1,40 @@
+﻿  Game.cpp
+E:\steel engine\steel\Steel\Source\Steel\Debug\Log.hpp(19,56): warning C4251: 'Steel::Log::myEngineLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Steel::Log'
+E:\steel engine\steel\Steel\ThirdParty\spdlog\include\spdlog\details\registry.h(34): message : see declaration of 'std::shared_ptr<spdlog::logger>'
+E:\steel engine\steel\Steel\Source\Steel\Debug\Log.hpp(20,54): warning C4251: 'Steel::Log::myGameLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Steel::Log'
+E:\steel engine\steel\Steel\ThirdParty\spdlog\include\spdlog\details\registry.h(34): message : see declaration of 'std::shared_ptr<spdlog::logger>'
+E:\steel engine\steel\Steel\Source\Steel\Layer.hpp(24,26): warning C4251: 'Steel::Layer::myDebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Steel::Layer'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4440): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(25,31): warning C4251: 'Steel::LayerStack::myLayers': class 'std::vector<Steel::Layer *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Steel::LayerStack'
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(25,31): warning C4251:         with
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(25,31): warning C4251:         [
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(25,31): warning C4251:             _Ty=Steel::Layer *
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(25,31): warning C4251:         ]
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(21): message : see declaration of 'std::vector<Steel::Layer *,std::allocator<_Ty>>'
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(21): message :         with
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(21): message :         [
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(21): message :             _Ty=Steel::Layer *
+E:\steel engine\steel\Steel\Source\Steel\LayerStack.hpp(21): message :         ]
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41,35): warning C4251: 'Steel::Application::myWindow': class 'std::unique_ptr<Steel::Window,std::default_delete<_Ty>>' needs to have dll-interface to be used by clients of class 'Steel::Application'
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41,35): warning C4251:         with
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41,35): warning C4251:         [
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41,35): warning C4251:             _Ty=Steel::Window
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41,35): warning C4251:         ]
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41): message : see declaration of 'std::unique_ptr<Steel::Window,std::default_delete<_Ty>>'
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41): message :         with
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41): message :         [
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41): message :             _Ty=Steel::Window
+E:\steel engine\steel\Steel\Source\Steel\Application.hpp(41): message :         ]
+     Creating library ..\bin\Release-windows-x86_64\Game\Game.lib and object ..\bin\Release-windows-x86_64\Game\Game.exp
+LINK : warning LNK4217: symbol '?Init@Log@Steel@@SAXXZ (public: static void __cdecl Steel::Log::Init(void))' defined in 'Steel.lib(Log.obj)' is imported by 'Game.obj' in function 'main'
+LINK : warning LNK4217: symbol '?GetEngineLogger@Log@Steel@@SAAEAV?$shared_ptr@Vlogger@spdlog@@@std@@XZ (public: static class std::shared_ptr<class spdlog::logger> & __cdecl Steel::Log::GetEngineLogger(void))' defined in 'Steel.lib(Application.obj)' is imported by 'Game.obj' in function '"public: virtual void __cdecl TestLayer::OnEvent(class Steel::Event &)" (?OnEvent@TestLayer@@UEAAXAEAVEvent@Steel@@@Z)'
+LINK : warning LNK4217: symbol '?GetGameLogger@Log@Steel@@SAAEAV?$shared_ptr@Vlogger@spdlog@@@std@@XZ (public: static class std::shared_ptr<class spdlog::logger> & __cdecl Steel::Log::GetGameLogger(void))' defined in 'Steel.lib(Application.obj)' is imported by 'Game.obj' in function '"public: virtual void __cdecl TestLayer::OnUpdate(void)" (?OnUpdate@TestLayer@@UEAAXXZ)'
+LINK : warning LNK4217: symbol '??0Layer@Steel@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z (public: __cdecl Steel::Layer::Layer(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &))' defined in 'Steel.lib(Layer.obj)' is imported by 'Game.obj' in function '"class Steel::Application * __cdecl Steel::CreateApplication(void)" (?CreateApplication@Steel@@YAPEAVApplication@1@XZ)'
+LINK : warning LNK4217: symbol '??1Layer@Steel@@UEAA@XZ (public: virtual __cdecl Steel::Layer::~Layer(void))' defined in 'Steel.lib(Layer.obj)' is imported by 'Game.obj' in function '"public: virtual void * __cdecl TestLayer::`scalar deleting destructor'(unsigned int)" (??_GTestLayer@@UEAAPEAXI@Z)'
+LINK : warning LNK4217: symbol '??0Application@Steel@@QEAA@XZ (public: __cdecl Steel::Application::Application(void))' defined in 'Steel.lib(Application.obj)' is imported by 'Game.obj' in function '"class Steel::Application * __cdecl Steel::CreateApplication(void)" (?CreateApplication@Steel@@YAPEAVApplication@1@XZ)'
+LINK : warning LNK4217: symbol '??1Application@Steel@@UEAA@XZ (public: virtual __cdecl Steel::Application::~Application(void))' defined in 'Steel.lib(Application.obj)' is imported by 'Game.obj' in function '"public: virtual void * __cdecl Test::`scalar deleting destructor'(unsigned int)" (??_GTest@@UEAAPEAXI@Z)'
+LINK : warning LNK4217: symbol '?Run@Application@Steel@@QEAAXXZ (public: void __cdecl Steel::Application::Run(void))' defined in 'Steel.lib(Application.obj)' is imported by 'Game.obj' in function 'main'
+LINK : warning LNK4217: symbol '?PushLayer@Application@Steel@@QEAAXPEAVLayer@2@@Z (public: void __cdecl Steel::Application::PushLayer(class Steel::Layer *))' defined in 'Steel.lib(Application.obj)' is imported by 'Game.obj' in function '"class Steel::Application * __cdecl Steel::CreateApplication(void)" (?CreateApplication@Steel@@YAPEAVApplication@1@XZ)'
+LINK : warning LNK4217: symbol '?GetInstance@Input@Steel@@SAPEAV12@XZ (public: static class Steel::Input * __cdecl Steel::Input::GetInstance(void))' defined in 'Steel.lib(Input.obj)' is imported by 'Game.obj' in function '"public: virtual void __cdecl TestLayer::OnUpdate(void)" (?OnUpdate@TestLayer@@UEAAXXZ)'
+LINK : warning LNK4217: symbol '?IsKeyPressed@Input@Steel@@SA_NH@Z (public: static bool __cdecl Steel::Input::IsKeyPressed(int))' defined in 'Steel.lib(Input.obj)' is imported by 'Game.obj' in function '"public: virtual void __cdecl TestLayer::OnUpdate(void)" (?OnUpdate@TestLayer@@UEAAXXZ)'
+  Game.vcxproj -> E:\steel engine\steel\game\..\bin\Release-windows-x86_64\Game\Game.exe

@@ -22,7 +22,7 @@ namespace Steel {
 	};
 
 	// Interface representing a desktop system based Window
-	class STEEL_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
@@ -38,6 +38,8 @@ namespace Steel {
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
+
+		virtual void* GetNativeWindow() const = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};

@@ -7,7 +7,7 @@
 
 namespace Steel
 {
-	class STEEL_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();
@@ -23,7 +23,6 @@ namespace Steel
 
 	private:
 		std::vector<Layer*> myLayers;
-		std::vector<Layer*>::iterator myLayerInsert;
-
+		unsigned int myLayerInsertIndex = 0;
 	};
 }

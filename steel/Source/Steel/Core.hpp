@@ -1,20 +1,18 @@
 #pragma once
 
 #ifdef STEEL_PLATFORM_WINDOWS
-	#ifdef STEEL_BUILD_DLL
-		#define STEEL_API __declspec(dllexport)
-	#else
-		#define STEEL_API __declspec(dllimport)
+	
+	#ifdef STEEL_DEBUG
+		#define STEEL_ENABLE_ASSERTS
 	#endif
 
-#ifdef STEEL_ENABLE_ASSERTS
-#define STEEL_ASSERT(x, ...) { if(!(x)) { STEEL_GAME_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#define STEEL_ENGINE_ASSERT(x, ...) { if(!(x)) { STEEL_ENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#else
-#define STEEL_ASSERT(x, ...)
-#define STEEL_ENGINE_ASSERT(x, ...)
-#endif
-
+	#ifdef STEEL_ENABLE_ASSERTS
+		#define STEEL_ASSERT(x, ...) { if(!(x)) { STEEL_GAME_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+		#define STEEL_ENGINE_ASSERT(x, ...) { if(!(x)) { STEEL_ENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#else
+		#define STEEL_ASSERT(x, ...)
+		#define STEEL_ENGINE_ASSERT(x, ...)
+	#endif
 #else
 	#error Steel Engine is Windows only at the moment...
 #endif

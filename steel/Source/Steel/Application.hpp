@@ -7,9 +7,14 @@
 #include "Steel/Events/ApplicationEvent.h"
 #include "Steel/Events/MouseEvent.hpp"
 
+#include "Steel/ImGui/ImGuiLayer.hpp"
+
+#include "Steel/Renderer/Shader.hpp"
+#include "Steel/Renderer/Buffer.hpp"
+
 namespace Steel
 {
-	class STEEL_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -27,17 +32,24 @@ namespace Steel
 		inline Window& GetWindow() { return *myWindow; }
 
 	private:
+		bool OnWindowClose(WindowCloseEvent& e);
+
+	private:
 		static Application* myInstance;
 
-		bool OnWindowClose(WindowCloseEvent& e);
-		bool OnMouseScrolled(MouseScrolledEvent& e);
-
 		bool myIsRunning = true;
-		float val = 0.0f;
-
+		
+		ImGuiLayer* myImGuiLayer;
 		LayerStack myLayerStack;
 
+		UINT myVertexArray;
+		
 		std::unique_ptr<Window> myWindow;
+
+		std::unique_ptr<Shader> myShader;
+		std::unique_ptr<VertexBuffer> myVertexBuffer;
+		std::unique_ptr<IndexBuffer> myIndexBuffer;
+
 	};
 
 	Application* CreateApplication();

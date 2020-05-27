@@ -6,7 +6,6 @@ namespace Steel
 {
 	LayerStack::LayerStack()
 	{
-		myLayerInsert = myLayers.begin();
 	}
 
 	LayerStack::~LayerStack()
@@ -20,7 +19,8 @@ namespace Steel
 
 	void LayerStack::PushLayer(Layer* aLayer)
 	{
-		myLayerInsert = myLayers.emplace(myLayerInsert, aLayer);
+		myLayers.emplace(myLayers.begin() + myLayerInsertIndex, aLayer);
+		myLayerInsertIndex++;
 	}
 
 	void LayerStack::PushOverlay(Layer* aOverlay)
@@ -34,7 +34,7 @@ namespace Steel
 		if (it != myLayers.end())
 		{
 			myLayers.erase(it);
-			myLayerInsert--;
+			myLayerInsertIndex--;
 		}
 	}
 

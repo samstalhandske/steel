@@ -6,7 +6,7 @@
 #include "Steel/Events/MouseEvent.hpp"
 #include "Steel/Events/KeyEvent.hpp"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.hpp"
 
 namespace Steel {
 
@@ -38,8 +38,8 @@ namespace Steel {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 		
-		
 		STEEL_ENGINE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		
 
 		if (!s_GLFWInitialized)
 		{
@@ -52,14 +52,13 @@ namespace Steel {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-
-		STEEL_ENGINE_ASSERT(gladStatus, "Failed to initialize glad!");
+		
+		myContext = new OpenGLContext(m_Window);
+		myContext->Init();
+		
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
-
 
 		// GLFW Callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
@@ -161,7 +160,7 @@ namespace Steel {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		myContext->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

@@ -1,0 +1,4 @@
+﻿  Application.cpp
+E:\steel engine\steel\steel\Source\Steel\Application.cpp(77,32): warning C4312: 'type cast': conversion from 'const uint32_t' to 'const void *' of greater size
+E:\steel engine\steel\steel\Source\Steel\Renderer\Buffer.hpp(82): warning C4715: 'Steel::BufferElement::GetComponentCount': not all control paths return a value
+  Steel.vcxproj -> E:\steel engine\steel\steel\..\bin\Debug-windows-x86_64\Steel\Steel.lib

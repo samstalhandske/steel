@@ -7,7 +7,7 @@
 
 namespace Steel
 {
-	class STEEL_API Log
+	class Log
 	{
 	public:
 		static void Init();
